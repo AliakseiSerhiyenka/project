@@ -4,6 +4,7 @@ public class Sprzet {
     private String nazwa;
     private double cena;
     private String typ;
+    Rezerwacja rezerwacja;
 
     public Sprzet(String nazwa, double cena, String typ) {
         this.nazwa = nazwa;

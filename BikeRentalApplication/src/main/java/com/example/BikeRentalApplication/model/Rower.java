@@ -16,9 +16,10 @@ public class Rower {
     protected double cenaZaDzien;
     protected String rozmiarRamy;
     protected String stanRoweru;
-    protected Napend napend;// = new Elektryczny(1,"E",1999999,45999999,200);
+    protected Napend napend;
     public static List<Rower> rowery = new ArrayList<>();
     private List<Rezerwacja> rezerwacje;
+    private List<Naprawa> naprawy;
 
     //@SneakyThrows
     public static Rower getRowerById(int id) throws Exception {

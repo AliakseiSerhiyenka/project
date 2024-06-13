@@ -11,11 +11,10 @@ public class Klient {
     public Klient(Osoba osoba) {
         this.osoba=osoba;
         klients.add(this);
+        //osoba.setKlientRole();
 
     }
-//    public void addKlient(){
-//        this(osoba)
-//    }
+
     public void addToRezewacje(Rezerwacja rezerwacja){
       rezerwacje.add(rezerwacja);
     }
@@ -27,9 +26,6 @@ public class Klient {
         return osoba;
     }
 
-//    public void setOsoba(Osoba osoba) {
-//        this.osoba = osoba;
-//    }
 
     @Override
     public String toString() {

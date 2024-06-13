@@ -38,7 +38,7 @@ public  class Osoba{
         //pracownikRole.setOsoba(this);
     }
 
-
+//TODO add if null Role
     @Override
     public String toString() {
         return "Osoba{" +
@@ -49,8 +49,8 @@ public  class Osoba{
                 ", dataUrodzenia=" + dataUrodzenia +
                 ", numerTelefonu=" + numerTelefonu +
                 ", email='" + email + '\'' +
-                ", klientRole=" + klientRole.toString() +
-                ", pracownikRole=" + pracownikRole.toString() +
+                //", klientRole=" + klientRole.toString() +
+                //", pracownikRole=" + pracownikRole.toString() +
                 '}';
     }
 

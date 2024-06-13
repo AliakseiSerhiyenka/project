@@ -23,4 +23,5 @@ public class Rezerwacja {
         this.sprzet = sprzet;
         klient.addToRezewacje(this);
     }
+
 }

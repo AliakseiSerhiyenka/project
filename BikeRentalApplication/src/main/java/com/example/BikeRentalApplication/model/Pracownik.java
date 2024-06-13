@@ -12,11 +12,17 @@ public class Pracownik {
     Osoba osoba;
 
     public static List<Pracownik> pracowniks= new ArrayList<>();
-
     public Pracownik(Osoba osoba) {
         this.osoba=osoba;
         pracowniks.add(this);
-
+        this.adress=adress;
+        this.dataZatrudnienia=LocalDate.now();
+    }
+    public Pracownik(Osoba osoba,String adress) {
+        this.osoba=osoba;
+        pracowniks.add(this);
+        this.adress=adress;
+        this.dataZatrudnienia=LocalDate.now();
     }
     public Osoba getOsoba() {
         return osoba;
@@ -29,6 +35,7 @@ public class Pracownik {
     @Override
     public String toString() {
         return "Pracownik{" +
+                "Osoba" + osoba.toString()+
                 "dataZatrudnienia=" + dataZatrudnienia +
                 ", adress='" + adress + '\'' +
                 '}';

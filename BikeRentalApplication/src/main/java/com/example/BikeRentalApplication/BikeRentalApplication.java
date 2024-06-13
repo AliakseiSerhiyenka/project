@@ -4,6 +4,8 @@ import com.example.BikeRentalApplication.model.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.ReactiveAdapterRegistry;
+import org.springframework.security.access.method.P;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,7 +46,7 @@ public class BikeRentalApplication {
 		Rower.displayAllRovers();
 
 		Osoba os = new Osoba(
-				1,                      // id
+				99,                      // id
 				"John",                 // imie
 				"Doe",                  // nazwisko
 				"Male",                 // plec
@@ -52,11 +54,15 @@ public class BikeRentalApplication {
 				Arrays.asList(123456789, 987654321),         // numerTelefonu
 				"john.doe@example.com" // email
 		);
+		Pracownik pracownik = new Manager(os,"BLK 7",200.99);
 		os.setKlientRole();
-		os.setPracownikRole();
-		System.out.println("Pracowniki");
-		System.out.println(os);
 
+		//os.setPracownikRole();
+		System.out.println("Pracowniki");
+
+		//System.out.println(os);
+		System.out.println(pracownik);
+		//System.out.println(pracownik.getOsoba().getId());
 
 	}
 }
