@@ -1,13 +1,33 @@
 package com.example.BikeRentalApplication.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name="przegliad")
+@Data
+@NoArgsConstructor
 public class Przegliad {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private LocalDate dataPrzegladu;
     private String opis;
+
+    @ManyToOne
+    @JoinColumn(name = "rower_id")
     Rower rower;
+
+    @ManyToOne
+    @JoinColumn(name = "naprawa_id")
     Naprawa naprawa;
+
+    @ManyToOne
+    @JoinColumn(name = "serwisant_id")
     Serwisant  serwisant;
 
 

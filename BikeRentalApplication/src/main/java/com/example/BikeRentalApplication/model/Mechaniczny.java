@@ -1,6 +1,17 @@
 package com.example.BikeRentalApplication.model;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name="mechaniczny")
+@Data
+@NoArgsConstructor
 public class Mechaniczny extends Napend {
+
     private int liczbaBiegow;
     private String rodzajSystemu;
 

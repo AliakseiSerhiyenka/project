@@ -1,9 +1,20 @@
 package com.example.BikeRentalApplication.model;
 
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+@Entity
+@DiscriminatorValue("manager")
+@NoArgsConstructor
+@Data
 public class Manager extends Pracownik{
+
     private static LocalDate dzienWyplaty;
     private double wyplata;
     private static double minimalna;

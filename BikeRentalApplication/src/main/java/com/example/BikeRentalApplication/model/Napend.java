@@ -1,44 +1,31 @@
 package com.example.BikeRentalApplication.model;
 
 
+import jakarta.persistence.*;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name="napend")
+@Data
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Napend {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String typ;
 
+    @OneToOne
+    @JoinColumn(name = "rower_id")
     private Rower rower;
-
-
-
 
     public Napend(int id, String typ) {
         this.id = id;
         this.typ = typ;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTyp() {
-        return typ;
-    }
-
-    public void setTyp(String typ) {
-        this.typ = typ;
-    }
-
-    public Rower getRower() {
-        return rower;
-    }
-
-    public void setRower(Rower rower) {
-        this.rower = rower;
     }
 
 
@@ -71,5 +58,4 @@ public abstract class Napend {
                 ", typ='" + typ + '\'' +
                 '}';
     }
-    // Gettery i settery
 }

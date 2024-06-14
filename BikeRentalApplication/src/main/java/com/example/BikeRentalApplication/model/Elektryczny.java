@@ -1,6 +1,16 @@
 package com.example.BikeRentalApplication.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name="elektryczny")
+@Data
+@NoArgsConstructor
 public class Elektryczny extends Napend {
+
     private int pojemnoscBaterii;
     private int predkosc;
     private int maxDystans;
@@ -21,27 +31,4 @@ public class Elektryczny extends Napend {
                 '}';
     }
 
-    public int getPojemnoscBaterii() {
-        return pojemnoscBaterii;
-    }
-
-    public void setPojemnoscBaterii(int pojemnoscBaterii) {
-        this.pojemnoscBaterii = pojemnoscBaterii;
-    }
-
-    public int getPredkosc() {
-        return predkosc;
-    }
-
-    public void setPredkosc(int predkosc) {
-        this.predkosc = predkosc;
-    }
-
-    public int getMaxDystans() {
-        return maxDystans;
-    }
-
-    public void setMaxDystans(int maxDystans) {
-        this.maxDystans = maxDystans;
-    }
 }

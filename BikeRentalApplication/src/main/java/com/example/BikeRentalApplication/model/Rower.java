@@ -1,14 +1,23 @@
 package com.example.BikeRentalApplication.model;
 
-
-import lombok.SneakyThrows;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="rower")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "rower_type")
+@Data
+@NoArgsConstructor
 public class Rower {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
+
     protected String marka;
     protected String model;
     protected String kolor;
@@ -16,9 +25,16 @@ public class Rower {
     protected double cenaZaDzien;
     protected String rozmiarRamy;
     protected String stanRoweru;
+
+    @OneToOne(mappedBy = "rower", cascade = CascadeType.ALL)
     protected Napend napend;
+
     public static List<Rower> rowery = new ArrayList<>();
+
+    @OneToMany(mappedBy = "rower", cascade = CascadeType.ALL)
     private List<Rezerwacja> rezerwacje;
+
+    @OneToMany(mappedBy = "rower", cascade = CascadeType.ALL)
     private List<Naprawa> naprawy;
 
     //@SneakyThrows
@@ -60,15 +76,15 @@ public class Rower {
         this.napend=napend;
     }
 
-    public static Rower createElektrycznyRower(int idRower, String marka, String model, String kolor, double waga, double cenaZaDzien, String rozmiarRamy, String stanRoweru, int id, String typ, int pojemnoscBaterii, int predkosc, int maxDystans) {
+    public static Rower createElektrycznyRower(int idRower, String marka, String model, String kolor, double waga, double cenaZaDzien, String rozmiarRamy, String stanRoweru, String typ, int pojemnoscBaterii, int predkosc, int maxDystans) {
         var rower = new Rower(idRower, marka, model, kolor,  waga, cenaZaDzien, rozmiarRamy, stanRoweru);
-        rower.napend = new Elektryczny( id,typ,pojemnoscBaterii, predkosc, maxDystans);
+        rower.napend = new Elektryczny( idRower,typ,pojemnoscBaterii, predkosc, maxDystans);
         return rower;
     }
 
-    public static Rower createMechanicznyRower(int idRower, String marka, String model, String kolor, double waga, double cenaZaDzien, String rozmiarRamy, String stanRoweru, int id, String typ, int liczbaBiegow, String rodzajSystemu) {
+    public static Rower createMechanicznyRower(int idRower, String marka, String model, String kolor, double waga, double cenaZaDzien, String rozmiarRamy, String stanRoweru, String typ, int liczbaBiegow, String rodzajSystemu) {
         var rower = new Rower(idRower, marka, model, kolor,  waga, cenaZaDzien, rozmiarRamy, stanRoweru);
-        rower.napend = new Mechaniczny( id, typ, liczbaBiegow, rodzajSystemu);
+        rower.napend = new Mechaniczny( idRower, typ, liczbaBiegow, rodzajSystemu);
         return rower;
     }
 

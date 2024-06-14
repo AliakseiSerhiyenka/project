@@ -1,7 +1,17 @@
 package com.example.BikeRentalApplication.model;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity
+@DiscriminatorValue("Dorosly")
+@Data
+@NoArgsConstructor
 public class Dorosly extends Rower {
+
     private boolean bagaznikPrzedni;
     private boolean bagaznikTylny;
 

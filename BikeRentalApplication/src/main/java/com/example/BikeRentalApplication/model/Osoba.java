@@ -1,22 +1,40 @@
 package com.example.BikeRentalApplication.model;
 
-import org.springframework.security.access.method.P;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
+@Entity
+@Table(name="osoba")
+@Data
+@NoArgsConstructor
 public  class Osoba{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String imie;
     private String nazwisko;
     private String plec;
     private LocalDate dataUrodzenia;
+
+    @ElementCollection
     private List<Integer> numerTelefonu;
     private String email;
 
+    @OneToOne(mappedBy = "osoba", cascade = CascadeType.ALL)
     private Klient klientRole;
-    private Pracownik pracownikRole;
 
+    @OneToOne(mappedBy = "osoba", cascade = CascadeType.ALL)
+    protected Pracownik pracownikRole;
 
+    public static List<Osoba> osoby= new ArrayList<>();
+    @Transient
     private int wiek;
 
     public Osoba(int id, String imie, String nazwisko, String plec, LocalDate dataUrodzenia, List<Integer> numerTelefonu, String email) {
@@ -38,7 +56,11 @@ public  class Osoba{
         //pracownikRole.setOsoba(this);
     }
 
-//TODO add if null Role
+    public Pracownik getPracownikRole() {
+        return pracownikRole;
+    }
+
+    //TODO add if null Role
     @Override
     public String toString() {
         return "Osoba{" +
